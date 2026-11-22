@@ -1,0 +1,30 @@
+{
+  "name": "ai-study-assistant",
+  "version": "1.0.0",
+  "description": "Trợ lý học tập AI: đọc câu hỏi từ trang web hoặc nhập tay, đưa đáp án kèm giải thích.",
+  "main": "main.js",
+  "author": "AI Study Assistant",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis --x64"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.local.aistudyassistant",
+    "productName": "AI Study Assistant",
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "renderer/**/*"],
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }] },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "AI-Study-Assistant-Setup-${version}.${ext}"
+    }
+  }
+}
